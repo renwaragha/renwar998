@@ -1,20 +1,16 @@
-{
-  "name": "MusicBot",
-  "description": "A MusicBot for Discord",
-  "version": "0.0.0",
-  "main": "bot.js",
-  "scripts": {
-    "start": "node bot.js"
-  },
-  "dependencies": {
-    "discord.js": "11.3.2",
-    "node-opus": "0.2.7",
-    "opusscript": "0.0.6",
-    "ytdl-core": "0.20.2",
-    "simple-youtube-api": "5.0.1",
-    "gcc": "1.0.2",
-    "ffmpeg": "0.0.4",
-    "ffmpeg-binaries": "3.2.2-3",
-    "request": "2.81.0"
-  }
-}
+////// code invite  manager ///////
+client.on("anonemous", member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const gamer = invites[member.guild.id];
+    invites[member.guild.id] = guildInvites;
+    const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const welcome = member.guild.channels.find(
+      channel => channel.id === "753974483639074866"///kak lahur/ ID chanal lam basha da bny
+
+    );//// 
+    welcome.send(
+      __**[<@${member.id}>] **|invite kra la layan**             | [<@${inviter.id}>] | **Zhmaray henan** |${invite.uses}**__
+    );
+  });
+});
